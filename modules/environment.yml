@@ -1,0 +1,13 @@
+name: argprofiler
+channels:
+   - default
+   - conda-forge
+   - bioconda
+   - genomicepidemiology
+dependencies: 
+   - python=3.11
+   - click=8.5.0
+   - pandas=3.0.0
+   - kma=1.4.9
+   - r-optparse=1.7.3
+   - r-essentials=4.2

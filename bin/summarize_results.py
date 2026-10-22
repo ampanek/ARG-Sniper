@@ -153,7 +153,7 @@ def summary_report(groot_results, ariba_results, ariba_summary, karga_results, s
         if 'userGeneName' in metadata_df.columns:
             metadata_df.rename(columns={'userGeneName': 'Gene'}, inplace=True)
             merged_df = pd.merge(merged_df, metadata_df, on="Gene", how="inner")
-            merged_df.fillna(0, inplace=True)
+            merged_df.fillna("0", inplace=True)
             print(f"Summary: Finalized report {output_file}")
             merged_df.to_csv(output_file, sep="\t", index=False)
         else:

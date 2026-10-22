@@ -63,7 +63,7 @@ if(opt$verbose){
 
 # Read in the refdata / onject with genes and gene lengths
 refdata_width = ncol(read.delim(opt$refdata, nrows =  1, comment.char = "#", sep = "\t"))
-refdata = read.delim(opt$refdata, comment.char = "#", sep = "\t", h = F,
+refdata = read.delim(opt$refdata, comment.char = "#", sep = "\t", h = T,
                      colClasses = c("character", "integer", 
                                     rep("NULL", refdata_width - 2)))
 colnames(refdata) = c("# refSequence", "length")

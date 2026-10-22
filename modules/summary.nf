@@ -1,5 +1,6 @@
 process summarize_results {
     tag "Summary"
+    conda "${projectDir}/modules/environment.yml"
     publishDir "${params.OUTPUT}", mode: 'copy'
     
     input:
