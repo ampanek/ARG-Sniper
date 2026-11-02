@@ -6,6 +6,7 @@ nextflow.enable.dsl=2
 
 // Align reads to ARGprofiler database
 process kma_align {
+    container 'community.wave.seqera.io/library/python_click_pandas_kma_pruned:ab5aeec73cb4abb3'
     conda "${projectDir}/modules/environment.yml"
     publishDir params.OUTPUT, mode: 'copy'
 
