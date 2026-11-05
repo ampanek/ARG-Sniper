@@ -99,7 +99,7 @@ params.skip_srst2 = false
 workflow {
 
     groot_ch = params.skip_groot ? Channel.empty() : groot_align(fastq_ch)
-    kma_ch = params.skip_kma ? Channel.empty() : kma_align(fastq_ch)
+    kma_ch = params.skip_kma ? Channel.empty() : kma_align(fastq_ch, file(params.argprofilerdb))
     ariba_ch = params.skip_ariba ? Channel.empty() : ariba_run(fastq_ch)
     ariba_summary_ch = params.skip_ariba ? Channel.empty() : ariba_summary(ariba_ch)
     karga_ch = params.skip_karga ? Channel.empty() : karga(fastq_ch)
