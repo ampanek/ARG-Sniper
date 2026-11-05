@@ -5,7 +5,7 @@ process summarize_results {
     publishDir "${params.OUTPUT}", mode: 'copy'
     
     input:
-    tuple val(sample_name), val(groot_file), val(ariba_file), val(ariba_summary_file), val(karga_file), val(srst2_fullgenes_file), val(kma_file), val(metadata_file)
+    tuple val(sample_name), val(groot_file), val(ariba_file), val(ariba_summary_file), val(karga_file), val(srst2_fullgenes_file), path(kma_file), path(metadata_file)
 
     output:
     path("summary_${sample_name}.tsv")
