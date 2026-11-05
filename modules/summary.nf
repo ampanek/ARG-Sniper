@@ -24,6 +24,6 @@ process summarize_results {
         if (metadata_file != '')        args << "--metadata ${metadata_file}"
         args << "--output_file summary_${sample_name}.tsv"
         """
-        python3 ${projectDir}/bin/summarize_results.py ${args.join(' ')}
+        summarize_results.py ${args.join(' ')}
         """
 }
