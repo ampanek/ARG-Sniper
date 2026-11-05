@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import csv, os
 import click
 import pandas as pd
