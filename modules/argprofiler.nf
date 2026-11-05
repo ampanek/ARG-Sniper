@@ -20,7 +20,7 @@ process kma_align {
     '''
     kma -ipe !{R1_fastq} !{R2_fastq} -o !{sample_name} -t_db !{db_dir}/panARG -ef -1t1 -nf -vcf -sam -matrix -t !{params.NCPUS} > !{sample_name}.sam 2>log.txt
     
-    Rscript !{projectDir}/bin/mapstatFilters.R -i !{sample_name}.mapstat -o ARGprofiler_report_!{sample_name}.txt -r !{db_dir}/panARG_annotations.tsv -d 6
+    mapstatFilters.R -i !{sample_name}.mapstat -o ARGprofiler_report_!{sample_name}.txt -r !{db_dir}/panARG_annotations.tsv -d 6
     '''
 }
 
