@@ -94,7 +94,7 @@ def parse_argprofiler_results(argprofiler_output_file):
     try:
         # Parase the file where first 6 lines are comments and 7 line is the header
         output = pd.read_csv(argprofiler_output_file, sep="\t", header=0, skiprows=6) # Read txt file
-        output = output[["# refSequence"]]
+        output = output[["# refSequence", "meanDepthCovered", "spuriosCovRatio", "readConsensRefIdentity", "readRefIdentity", "propCovered" ]]
         output[file_name]=1
         output.rename(columns={"# refSequence": "Gene"}, inplace=True)
 
@@ -150,7 +150,7 @@ def summary_report(groot_results, ariba_results, ariba_summary, karga_results, s
 
     if metadata:
         metadata_df = pd.read_csv(metadata, sep="\t")  # Assuming metadata is a TSV file
-        metadata_df.drop(columns=['entry_count','shortname','database','entry_count','id'], inplace=True)
+        metadata_df.drop(columns=['entry_count','shortname','entry_count','id'], inplace=True)
         if 'userGeneName' in metadata_df.columns:
             metadata_df.rename(columns={'userGeneName': 'Gene'}, inplace=True)
             merged_df = pd.merge(merged_df, metadata_df, on="Gene", how="inner")
