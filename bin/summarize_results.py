@@ -115,10 +115,10 @@ def parse_argprofiler_results(argprofiler_output_file):
 @click.option('--karga_results', type=click.Path(exists=True), required=False, help='Path to KARGA output TSV/CSV files')
 @click.option('--srst2_results', type=click.Path(exists=True), required=False, help='Path to SRST2 output TXT files')
 @click.option('--argprofiler_results', type=click.Path(exists=True), required=False, help='Path to ARGprofiler output TXT files')
-@click.option('--metadata', type=click.Path(exists=True), required=False, help='Path to metadata file (panARG_annotation.tsv)')
+@click.option('--metadata_file', type=click.Path(exists=True), required=False, help='Path to metadata file')
 @click.option('--output_file', required=True, help='Name of the output file to write the combined results')
 
-def summary_report(groot_results, ariba_results, ariba_summary, karga_results, srst2_results, argprofiler_results, metadata, output_file):   
+def summary_report(groot_results, ariba_results, ariba_summary, karga_results, srst2_results, argprofiler_results, metadata_file, output_file):   
     dfs = []
     if groot_results:
         groot = parse_groot_results(groot_results)
@@ -148,8 +148,8 @@ def summary_report(groot_results, ariba_results, ariba_summary, karga_results, s
         # replace .csv, .tsv, .txt with "" in column names
         merged_df.columns = merged_df.columns.str.replace(r'\.(csv|tsv|txt)$', '', regex=True)
 
-    if metadata:
-        metadata_df = pd.read_csv(metadata, sep=",")  # Assuming metadata is a TSV file
+    if metadata_file:
+        metadata_df = pd.read_csv(metadata_file, sep=",")  # Assuming metadata is a CSV file
         metadata_df.drop(columns=['entry_count','shortname','entry_count','id'], inplace=True)
         if 'userGeneName' in metadata_df.columns:
             metadata_df.rename(columns={'userGeneName': 'Gene'}, inplace=True)
