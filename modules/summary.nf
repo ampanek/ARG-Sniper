@@ -21,7 +21,7 @@ process summarize_results {
         if (karga_file != '')           args << "--karga_results ${karga_file}"
         if (srst2_fullgenes_file != '') args << "--srst2_results ${srst2_fullgenes_file}"
         if (kma_file != '')             args << "--argprofiler_results ${kma_file}"
-        if (metadata_file != '')        args << "--metadata ${metadata_file}"
+        if (metadata_file != '')        args << "--metadata_file ${metadata_file}"
         args << "--output_file summary_${sample_name}.tsv"
         """
         summarize_results.py ${args.join(' ')}
