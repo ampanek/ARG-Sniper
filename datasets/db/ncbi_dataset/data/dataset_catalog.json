@@ -1,0 +1,17 @@
+{
+  "microbigge": {
+    "files": [
+      {
+        "filePath": "nucleotide.fna",
+        "fileType": "GENOMIC_NUCLEOTIDE_FASTA",
+        "uncompressedLengthBytes": "14539372"
+      },
+      {
+        "filePath": "data_report.jsonl",
+        "fileType": "DATA_REPORT",
+        "uncompressedLengthBytes": "6390388"
+      }
+    ]
+  },
+  "apiVersion": "V2"
+}
