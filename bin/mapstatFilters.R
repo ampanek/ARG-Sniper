@@ -54,6 +54,7 @@ ms_header = mapstat[grep("##", mapstat)]
 ms_colnames = unlist(strsplit(mapstat[length(ms_header)+1], "\t"))
 ms_data = read.delim(textConnection(mapstat), comment.char = "#", h = F, 
                      col.names = ms_colnames, check.names = F)
+ms_data[["# refSequence"]] <- sub(" .*", "", ms_data[["# refSequence"]])
 
 if(opt$verbose){
   print(paste("Dimension of input:", opt$input))
@@ -62,8 +63,8 @@ if(opt$verbose){
 }
 
 # Read in the refdata / onject with genes and gene lengths
-refdata_width = ncol(read.delim(opt$refdata, nrows =  1, comment.char = "#", sep = "\t"))
-refdata = read.delim(opt$refdata, comment.char = "#", sep = "\t", h = T,
+refdata_width = ncol(read.delim(opt$refdata, nrows =  1, comment.char = "#", sep = ","))
+refdata = read.delim(opt$refdata, comment.char = "#", sep = ",", h = T,
                      colClasses = c("character", "integer", 
                                     rep("NULL", refdata_width - 2)))
 colnames(refdata) = c("# refSequence", "length")
