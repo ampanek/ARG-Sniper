@@ -19,7 +19,7 @@ process kma_align {
 
     shell:
     '''
-    kma -ipe !{R1_fastq} !{R2_fastq} -o !{sample_name} -t_db !{argprofilerdb} -ef -1t1 -nf -vcf -sam -matrix -t !{params.NCPUS} > !{sample_name}.sam 2>log.txt
+    kma -ipe !{R1_fastq} !{R2_fastq} -o !{sample_name} -t_db !{params.database} -ef -1t1 -nf -vcf -sam -matrix -t !{params.NCPUS} > !{sample_name}.sam 2>log.txt
     
     mapstatFilters.R -i !{sample_name}.mapstat -o ARGprofiler_report_!{sample_name}.txt -r !{metadata_file} -d 6
     '''
