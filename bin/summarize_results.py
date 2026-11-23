@@ -149,12 +149,12 @@ def summary_report(groot_results, ariba_results, ariba_summary, karga_results, s
         merged_df.columns = merged_df.columns.str.replace(r'\.(csv|tsv|txt)$', '', regex=True)
 
     if metadata_file:
-        metadata_df = pd.read_csv(metadata_file, sep=",")  # Assuming metadata is a CSV file
+        metadata_df = pd.read_csv(metadata_file, dtype=str, sep=",")  # Assuming metadata is a CSV file
         metadata_df.drop(columns=['entry_count','shortname','entry_count','id'], inplace=True)
         if 'userGeneName' in metadata_df.columns:
             metadata_df.rename(columns={'userGeneName': 'Gene'}, inplace=True)
             merged_df = pd.merge(merged_df, metadata_df, on="Gene", how="inner")
-            merged_df.fillna(0, inplace=True)
+            merged_df.fillna("0", inplace=True)
             print(f"Summary: Finalized report {output_file}")
             merged_df.to_csv(output_file, sep="\t", index=False)
         else:
